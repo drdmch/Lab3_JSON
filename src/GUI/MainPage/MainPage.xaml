@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GUI.MainPage"
+             BackgroundColor="#4B0011">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>      
+            <HorizontalStackLayout
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="8"
+                Padding="10"
+                Spacing="40">
+
+                <Button BackgroundColor="Wheat" TextColor="Black" 
+                    Text="Open file..."
+                    Clicked="OpenButton_Clicked" />
+
+                <Button BackgroundColor="Wheat" TextColor="Black" 
+                    Text="Find"
+                    Clicked="FindButton_Clicked" />
+
+                <Button BackgroundColor="Wheat" TextColor="Black"
+                    Text="Clear"
+                    Clicked="ClearButton_Clicked" />
+
+                <Button BackgroundColor="Wheat" TextColor="Black"
+                    Text="Add new book"
+                    Clicked="AddButton_Clicked" />
+                
+                <Button BackgroundColor="Wheat" TextColor="Black" Text="About" Clicked="ShowInfo" />
+
+                <Button BackgroundColor="Wheat" TextColor="Black"
+                    Text="Exit"
+                    Clicked="ExitButton_Clicked" />
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Spacing="5">
+
+                <CheckBox
+                    x:Name="TitleCheckbox"
+                     />
+                
+                <Label 
+                    WidthRequest="80"
+                    Text="Title" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" />
+                
+                <Entry 
+                    x:Name="TitleEntry"
+                    Placeholder="Enter book title here"
+                    WidthRequest="200" />
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Spacing="5">
+
+                <CheckBox
+                    x:Name="DescriptionCheckbox"
+                     />
+                
+                <Label 
+                    WidthRequest="80"
+                    Text="Description" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" />
+                
+                <Entry 
+                    x:Name="DescriptionEntry"
+                    Placeholder="Enter book description here"
+                    WidthRequest="200" />
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Spacing="5">
+
+                <CheckBox
+                    x:Name="GenreCheckbox"
+                     />
+                
+                <Label 
+                    WidthRequest="80"
+                    Text="Genre" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" />
+                
+                <Entry 
+                    x:Name="GenreEntry"
+                    Placeholder="Enter book genre here"
+                    WidthRequest="200" />
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Spacing="5">
+
+                <CheckBox
+                    x:Name="AuthorCheckbox"
+                     />
+                
+                <Label 
+                    WidthRequest="80"
+                    Text="Author" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" />
+                
+                <Entry 
+                    x:Name="AuthorEntry"
+                    Placeholder="Enter book author here"
+                    WidthRequest="200" />
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                Grid.Row="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Spacing="5">
+
+                <CheckBox
+                    x:Name="YearCheckbox"
+                     />
+                
+                <Label 
+                    WidthRequest="80"
+                    Text="Year" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" />
+                
+                <Entry 
+                    x:Name="YearEntry"
+                    Placeholder="Enter book year here"
+                    WidthRequest="200" />
+
+            </HorizontalStackLayout>
+
+            <Grid
+                x:Name="ResultsTable"
+                Grid.Row="1"
+                Grid.Column="3"
+                Grid.RowSpan="6"
+                Grid.ColumnSpan="5"
+                Padding="0, 10, 0, 0" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0"
+                Grid.Column="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Text="Title" />
+
+                <Label Grid.Row="0"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Text="Author" />
+
+                <Label Grid.Row="0"
+                Grid.Column="2"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Text="Year" />
+
+                <Label Grid.Row="0"
+                Grid.Column="3"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Text="Genre" />
+
+                <Label Grid.Row="0"
+                Grid.Column="4"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Text="Description" />
+
+            </Grid>
+
+        </Grid>
+        
+    </ScrollView>
+
+</ContentPage>

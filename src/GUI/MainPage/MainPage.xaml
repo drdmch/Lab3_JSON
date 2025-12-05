@@ -118,7 +118,7 @@
                     Text="Genre" 
                     HorizontalOptions="Center" 
                     VerticalOptions="Center" />
-                
+
                 <Entry 
                     x:Name="GenreEntry"
                     Placeholder="Enter book genre here"
@@ -128,6 +128,19 @@
 
             <HorizontalStackLayout
                 Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Spacing="5">
+
+                <Picker 
+                    x:Name="GenrePicker" 
+                    Title="Choose a Genre" 
+                    ItemsSource="{Binding GenreList}"/>
+                
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                Grid.Row="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 Spacing="5">
@@ -150,7 +163,7 @@
             </HorizontalStackLayout>
 
             <HorizontalStackLayout
-                Grid.Row="5"
+                Grid.Row="6"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 Spacing="5">

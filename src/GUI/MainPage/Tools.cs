@@ -23,7 +23,8 @@ public partial class MainPage : ContentPage
 			filters.Author = AuthorEntry.Text ?? "";
 		}
 
-		if (GenreCheckbox.IsChecked)
+		if (GenrePicker.SelectedItem != null) filters.Genre = GenrePicker.SelectedItem.ToString();
+        if (GenreCheckbox.IsChecked)
 		{
 			filters.Genre = GenreEntry.Text ?? "";
 		}

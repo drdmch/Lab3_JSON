@@ -1,1 +1,46 @@
-[{"Title":"OOP posibnyk","Description":"pupupu","Year":"2022","Genre":"Modern","Author":{"FirstName":"Liudmyla","MiddleName":"","LastName":"Omelchuk"}}]
+[
+  {
+    "Title": "OOP posibnyk",
+    "Description": "pupupu",
+    "Year": "2022",
+    "Genre": "Modern",
+    "Author": {
+      "FirstName": "Liudmyla",
+      "MiddleName": "",
+      "LastName": "Omelchuk"
+    }
+  },
+  {
+    "Title": "The Ice Throne",
+    "Description": "An epic fantasy about kingdoms.",
+    "Year": "2018",
+    "Genre": "Fantasy",
+    "Author": {
+      "FirstName": "Olexandr",
+      "MiddleName": "",
+      "LastName": "Zhovtyi"
+    }
+  },
+  {
+    "Title": "Shadows of Forgotten Ancestors",
+    "Description": "A story about tragic Hutsul love.",
+    "Year": "1911",
+    "Genre": "Classic",
+    "Author": {
+      "FirstName": "Mykhailo",
+      "MiddleName": "M.",
+      "LastName": "Kotsiubynsky"
+    }
+  },
+  {
+    "Title": "The Power of Habit",
+    "Description": "A study of the scientific mechanisms.",
+    "Year": "2012",
+    "Genre": "Classic",
+    "Author": {
+      "FirstName": "Charles",
+      "MiddleName": "",
+      "LastName": "Duhigg"
+    }
+  }
+]

@@ -1,17 +1,34 @@
-﻿using System.Text;
-using System.Text.Json;
+﻿using NJsonSchema;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
-using NJsonSchema;
+using System.Text;
+using System.Text.Json;
 
 namespace GUI;
 
 public partial class MainPage : ContentPage
 {
-	private void SaveData() {
+
+    private ObservableCollection<string> _genreList;
+    public ObservableCollection<string> GenreList
+    {
+        get => _genreList;
+        set
+        {
+            if (_genreList != value)
+            {
+                _genreList = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+    private void SaveData() {
 		File.WriteAllText(ChosenFile.FullPath, string.Empty);
 		JsonSerializerOptions options= new() { WriteIndented = true };
 		File.WriteAllText(ChosenFile.FullPath, JsonSerializer.Serialize(Books, options));
-	}
+        ProcessGenres(Books);
+        BindingContext = this;
+    }
 
 	private async void ExitButton_Clicked(object? _, EventArgs e)
 	{
@@ -77,7 +94,9 @@ public partial class MainPage : ContentPage
 		Books = JsonSerializer.Deserialize<List<GUI.Books.Book>>(builder.ToString());
 		Title = "JsonEditor - " + ChosenFile.FileName;
 		ClearResults();
-		DisplayResults(Books);
+        ProcessGenres(Books);
+        BindingContext = this;
+        DisplayResults(Books);
 	}
 
 	private async void FindButton_Clicked(object? _, EventArgs e)
@@ -94,7 +113,8 @@ public partial class MainPage : ContentPage
 	private void ClearButton_Clicked(object? _, EventArgs e)
 	{
 		ClearFilters();
-		DisplayResults(Books);
+        BindingContext = this;
+        DisplayResults(Books);
 	}
 
 	private async void ShowInfo(object? _, EventArgs args) {
@@ -104,5 +124,25 @@ public partial class MainPage : ContentPage
 	private async void AddButton_Clicked(object? _, EventArgs args) {
 		Books.Add(new GUI.Books.Book());
 		await Navigation.PushModalAsync(new EditPage(Books, Books.Count - 1, () => { SaveData(); Find(); }));
-	}
+    }
+    private void ProcessGenres(IEnumerable<GUI.Books.Book> loadedBooks)
+    {
+        if (loadedBooks == null) return;
+
+        var genres = loadedBooks
+            .Select(b => b.Genre)
+            .Where(g => !string.IsNullOrEmpty(g))
+            .Distinct()
+            .OrderBy(g => g);
+
+        if (GenreList == null)
+            GenreList = new ObservableCollection<string>();
+
+        GenreList.Clear();
+
+        foreach (var genre in genres)
+        {
+            GenreList.Add(genre);
+        }
+    }
 }

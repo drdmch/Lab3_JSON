@@ -34,7 +34,10 @@ public partial class MainPage : ContentPage
 			filters.Year = YearEntry.Text ?? "";
 		}
 
-		return filters;
+        filters.MinYear = MinYearEntry?.Text ?? "";
+        filters.MaxYear = MaxYearEntry?.Text ?? "";
+
+        return filters;
 	}
 
 	private void ClearFilters()

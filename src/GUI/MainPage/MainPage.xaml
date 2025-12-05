@@ -14,9 +14,11 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -183,6 +185,12 @@
                     Placeholder="Enter book year here"
                     WidthRequest="200" />
 
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Spacing="5">
+                <Label WidthRequest="80" Text="Year range" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Entry x:Name="MinYearEntry" Placeholder="Min" WidthRequest="95" Keyboard="Numeric" />
+                <Entry x:Name="MaxYearEntry" Placeholder="Max" WidthRequest="95" Keyboard="Numeric" />
             </HorizontalStackLayout>
 
             <Grid

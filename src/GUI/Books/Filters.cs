@@ -11,6 +11,8 @@ public struct Filters
     public string Genre { get; set; }
 
     public string Year { get; set; }
+    public string MinYear { get; set; }
+    public string MaxYear { get; set; }
 
     public Filters()
     {
@@ -19,6 +21,8 @@ public struct Filters
         Author = "";
         Genre = "";
         Year = "";
+        MinYear = "";
+        MaxYear = "";   
     }
 
     public readonly bool ValidateBook(GUI.Books.Book book)
@@ -29,6 +33,20 @@ public struct Filters
         var genre = book.Genre.ToLower().Contains(Genre.ToLower());
         var author = book.Author.GetFullName().ToLower().Contains(Author.ToLower());
 
-        return title && year && description && genre && author;
+        bool rangeOk = true;
+        if (!string.IsNullOrWhiteSpace(MinYear))
+        {
+            if (!int.TryParse(MinYear, out int min)) return false;
+            if (!int.TryParse(book.Year, out int by)) return false;
+            if (by < min) rangeOk = false;
+        }
+        if (!string.IsNullOrWhiteSpace(MaxYear))
+        {
+            if (!int.TryParse(MaxYear, out int max)) return false;
+            if (!int.TryParse(book.Year, out int by)) return false;
+            if (by > max) rangeOk = false;
+        }
+
+        return title && year && description && genre && author && rangeOk;
     }
 }
